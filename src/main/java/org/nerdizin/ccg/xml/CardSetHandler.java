@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 
 public class CardSetHandler extends DefaultHandler {
@@ -12,21 +13,17 @@ public class CardSetHandler extends DefaultHandler {
     private static final Logger LOG = LoggerFactory.getLogger(CardSetHandler.class.getName());
 
     public static final String NAME = "Name";
+    public static final String DEFINITION = "Definition";
+    public static final String DEFINITIONS = "Definitions";
 
+    private XMLReader parser;
     private CardSet cardSet = new CardSet();
     private CardDefinitionHandler cardDefinitionHandler;
     private StringBuffer content = new StringBuffer();
 
 
-
-    @Override
-    public void startDocument() throws SAXException {
-        super.startDocument();
-    }
-
-    @Override
-    public void endDocument() throws SAXException {
-        super.endDocument();
+    public CardSetHandler(final XMLReader parser) {
+        this.parser = parser;
     }
 
     @Override
@@ -34,17 +31,26 @@ public class CardSetHandler extends DefaultHandler {
                              final String qName, final Attributes attributes) throws SAXException {
 
         switch(localName) {
-            case NAME: content.setLength(0); break;
+            case NAME:
+                content.setLength(0);
+                break;
+            case DEFINITION:
+                cardDefinitionHandler = new CardDefinitionHandler(parser, this);
+                break;
         }
     }
 
     @Override
     public void endElement(final String uri, final String localName, final String qName) throws SAXException {
-        super.endElement(uri, localName, qName);
         switch(localName) {
-            case NAME : cardSet.setName(content.toString());
-                LOG.info(cardSet.getName());
-            break;
+            case NAME :
+                cardSet.setName(content.toString());
+                LOG.info("1 " + cardSet);
+                break;
+            case DEFINITIONS:
+                cardSet.addCardDefinition(cardDefinitionHandler.getCardDefinition());
+                LOG.info("2 " + cardSet);
+                break;
         }
     }
 
