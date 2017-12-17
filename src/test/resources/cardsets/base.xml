@@ -21,5 +21,20 @@
 
             </Script>
         </Definition>
+        <Definition>
+            <Id>2</Id>
+            <Name>Temple of Light</Name>
+            <Type>Location</Type>
+            <SubTypes>
+                <SubType>Temple</SubType>
+            </SubTypes>
+            <Cost></Cost>
+            <Description>
+                In the production phase, produce L.
+            </Description>
+            <Script>
+
+            </Script>
+        </Definition>
     </Definitions>
 </CardSet>

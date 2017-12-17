@@ -10,15 +10,11 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class CardSetHandler extends DefaultHandler {
 
-    private static final Logger LOG = LoggerFactory.getLogger(CardSetHandler.class.getName());
-
-    public static final String NAME = "Name";
-    public static final String DEFINITION = "Definition";
-    public static final String DEFINITIONS = "Definitions";
+    private static final String NAME = "Name";
+    private static final String DEFINITIONS = "Definitions";
 
     private XMLReader parser;
     private CardSet cardSet = new CardSet();
-    private CardDefinitionHandler cardDefinitionHandler;
     private StringBuffer content = new StringBuffer();
 
 
@@ -34,8 +30,8 @@ public class CardSetHandler extends DefaultHandler {
             case NAME:
                 content.setLength(0);
                 break;
-            case DEFINITION:
-                cardDefinitionHandler = new CardDefinitionHandler(parser, this);
+            case DEFINITIONS:
+                new CardDefinitionHandler(parser, this, cardSet).handle();
                 break;
         }
     }
@@ -45,11 +41,6 @@ public class CardSetHandler extends DefaultHandler {
         switch(localName) {
             case NAME :
                 cardSet.setName(content.toString());
-                LOG.info("1 " + cardSet);
-                break;
-            case DEFINITIONS:
-                cardSet.addCardDefinition(cardDefinitionHandler.getCardDefinition());
-                LOG.info("2 " + cardSet);
                 break;
         }
     }
