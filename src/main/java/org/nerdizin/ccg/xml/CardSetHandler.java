@@ -1,8 +1,6 @@
 package org.nerdizin.ccg.xml;
 
 import org.nerdizin.ccg.entities.xml.CardSet;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
@@ -18,7 +16,7 @@ public class CardSetHandler extends DefaultHandler {
     private StringBuffer content = new StringBuffer();
 
 
-    public CardSetHandler(final XMLReader parser) {
+    CardSetHandler(final XMLReader parser) {
         this.parser = parser;
     }
 
