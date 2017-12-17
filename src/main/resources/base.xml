@@ -1,0 +1,25 @@
+<CardSet>
+    <Name>Base</Name>
+
+    <Definitions>
+        <Definition>
+            <Id>1</Id>
+            <Name>Goldmine</Name>
+            <Type>Location</Type>
+            <SubTypes>
+                <SubType>Mine</SubType>
+            </SubTypes>
+            <Cost></Cost>
+            <Description>
+                In the production phase, remove 1 gold counter then produce G.
+                When no gold counters remain, destroy this card.
+            </Description>
+            <Flavour>
+                Greed is good (Gordon Gecko).
+            </Flavour>
+            <Script>
+
+            </Script>
+        </Definition>
+    </Definitions>
+</CardSet>
