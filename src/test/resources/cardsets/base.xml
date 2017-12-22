@@ -11,11 +11,15 @@
             </SubTypes>
             <Cost></Cost>
             <Description>
-                In the production phase, remove 1 gold counter then produce G.
-                When no gold counters remain, destroy this card.
+                <LocalizedText language="en">
+                    In the production phase, remove 1 gold counter then produce G.
+                    When no gold counters remain, destroy this card.
+                </LocalizedText>
             </Description>
             <Flavour>
-                Greed is good (Gordon Gecko).
+                <LocalizedText language="en">
+                    Greed is good (Gordon Gecko).
+                </LocalizedText>
             </Flavour>
             <Script>
 
@@ -30,7 +34,9 @@
             </SubTypes>
             <Cost></Cost>
             <Description>
-                In the production phase, produce L.
+                <LocalizedText language="en">
+                    In the production phase, produce L.
+                </LocalizedText>
             </Description>
             <Script>
 

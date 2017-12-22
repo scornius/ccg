@@ -12,7 +12,7 @@ class CardSetParserTest {
     private static final Logger LOG = LoggerFactory.getLogger(CardSetParserTest.class.getName());
 
     @Test
-    public void testParser() {
+    void testParser() {
 
         final CardSet cardSet = CardSetParser.parseCardSet(getResourceURL("base.xml"));
         LOG.info(cardSet.toString());

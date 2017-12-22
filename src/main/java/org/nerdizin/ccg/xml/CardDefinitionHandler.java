@@ -1,5 +1,6 @@
 package org.nerdizin.ccg.xml;
 
+import org.nerdizin.ccg.entities.CardType;
 import org.nerdizin.ccg.entities.xml.CardDefinition;
 import org.nerdizin.ccg.entities.xml.CardSet;
 import org.slf4j.Logger;
@@ -18,6 +19,8 @@ public class CardDefinitionHandler extends DefaultHandler {
     private static final String DEFINITION = "Definition";
     private static final String NAME = "Name";
     private static final String ID = "Id";
+    private static final String TYPE = "Type";
+    private static final String DESCRIPTION = "Description";
 
     private final CardSet cardSet;
     private final XMLReader parser;
@@ -40,10 +43,14 @@ public class CardDefinitionHandler extends DefaultHandler {
         switch(localName) {
             case NAME:
             case ID:
+            case TYPE:
                 content.setLength(0);
                 break;
             case DEFINITION:
                 cardDefinition = new CardDefinition();
+                break;
+            case DESCRIPTION:
+                new LocalizedTextHandler(parser, this, cardDefinition.getDescription()).handle();
                 break;
         }
     }
@@ -56,6 +63,9 @@ public class CardDefinitionHandler extends DefaultHandler {
                 break;
             case ID:
                 cardDefinition.setId(Integer.parseInt(content.toString()));
+                break;
+            case TYPE:
+                cardDefinition.setType(CardType.getCardTypeByName(content.toString()));
                 break;
             case DEFINITION :
                 cardSet.addCardDefinition(cardDefinition);
