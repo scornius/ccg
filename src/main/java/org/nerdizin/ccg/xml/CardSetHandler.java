@@ -1,6 +1,6 @@
 package org.nerdizin.ccg.xml;
 
-import org.nerdizin.ccg.entities.xml.CardSet;
+import org.nerdizin.ccg.entities.CardSet;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;

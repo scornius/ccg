@@ -1,8 +1,4 @@
-package org.nerdizin.ccg.entities.xml;
-
-import org.nerdizin.ccg.entities.CardType;
-import org.nerdizin.ccg.entities.LocalizedText;
-import org.nerdizin.ccg.entities.Trigger;
+package org.nerdizin.ccg.entities;
 
 import java.util.HashMap;
 import java.util.Map;

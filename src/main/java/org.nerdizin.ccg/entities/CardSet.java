@@ -1,4 +1,4 @@
-package org.nerdizin.ccg.entities.xml;
+package org.nerdizin.ccg.entities;
 
 import java.util.HashMap;
 import java.util.Map;

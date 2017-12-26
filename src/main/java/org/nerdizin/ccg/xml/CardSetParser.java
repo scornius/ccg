@@ -1,6 +1,6 @@
 package org.nerdizin.ccg.xml;
 
-import org.nerdizin.ccg.entities.xml.CardSet;
+import org.nerdizin.ccg.entities.CardSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.InputSource;
