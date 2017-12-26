@@ -17,6 +17,10 @@ public class Game {
         this.players = players;
     }
 
+    public void addPlayer(final Player player) {
+        this.players.add(player);
+    }
+
     public Player getActivePlayer() {
         return activePlayer;
     }
