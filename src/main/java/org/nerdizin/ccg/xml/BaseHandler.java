@@ -3,7 +3,7 @@ package org.nerdizin.ccg.xml;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-public class BaseHandler extends DefaultHandler {
+public abstract class BaseHandler extends DefaultHandler {
 
     private final StringBuffer content = new StringBuffer();
 
@@ -13,7 +13,9 @@ public class BaseHandler extends DefaultHandler {
     }
 
     String getContent() {
-        return content.toString().trim();
+        String result = content.toString().trim();
+        result = result.replaceAll("\\s+", " ");
+        return result;
     }
 
     @Override

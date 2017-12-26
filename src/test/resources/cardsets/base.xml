@@ -25,13 +25,19 @@
                     Greed is good (Gordon Gecko).
                 </LocalizedText>
             </Flavour>
-            <Script>
-
-            </Script>
+            <Triggers>
+                <Trigger name="onProduction">
+                    player.pool.addGold(1);
+                </Trigger>
+            </Triggers>
         </Definition>
         <Definition>
             <Id>2</Id>
-            <Name>Temple of Light</Name>
+            <Name>
+                <LocalizedText language="en">
+                    Temple of Light
+                </LocalizedText>
+            </Name>
             <Type>Location</Type>
             <SubTypes>
                 <SubType>Temple</SubType>
@@ -42,9 +48,6 @@
                     In the production phase, produce L.
                 </LocalizedText>
             </Description>
-            <Script>
-
-            </Script>
         </Definition>
     </Definitions>
 </CardSet>
