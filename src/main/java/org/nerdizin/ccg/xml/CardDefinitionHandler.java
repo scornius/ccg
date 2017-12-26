@@ -20,6 +20,7 @@ public class CardDefinitionHandler extends BaseHandler {
     private static final String ID = "Id";
     private static final String TYPE = "Type";
     private static final String DESCRIPTION = "Description";
+    private static final String TRIGGERS = "Triggers";
 
     private final CardSet cardSet;
     private final XMLReader parser;
@@ -51,6 +52,9 @@ public class CardDefinitionHandler extends BaseHandler {
                 break;
             case DESCRIPTION:
                 new LocalizedTextHandler(parser, this, cardDefinition.getDescription()).handle();
+                break;
+            case TRIGGERS:
+                new TriggerHandler(parser, this, cardDefinition.getTriggers()).handle();
                 break;
         }
     }

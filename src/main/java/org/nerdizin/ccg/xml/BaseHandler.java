@@ -18,6 +18,13 @@ public abstract class BaseHandler extends DefaultHandler {
         return result;
     }
 
+    String getContentPreserveLineBreaks() {
+        String result = content.toString().trim();
+        result = result.replaceAll(" +", " ");
+        result = result.replaceAll("\\t+", " ");
+        return result;
+    }
+
     @Override
     public void characters(final char[] buffer, final int start, final int length) throws SAXException {
         content.append(buffer, start, length);

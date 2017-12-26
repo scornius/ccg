@@ -2,6 +2,10 @@ package org.nerdizin.ccg.entities.xml;
 
 import org.nerdizin.ccg.entities.CardType;
 import org.nerdizin.ccg.entities.LocalizedText;
+import org.nerdizin.ccg.entities.Trigger;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class CardDefinition {
 
@@ -9,6 +13,7 @@ public class CardDefinition {
     private LocalizedText name;
     private CardType type;
     private LocalizedText description;
+    private Map<String, Trigger> triggers = new HashMap<>();
 
     public CardDefinition() {
         name = new LocalizedText();
@@ -47,13 +52,22 @@ public class CardDefinition {
         this.description = description;
     }
 
+    public Map<String, Trigger> getTriggers() {
+        return triggers;
+    }
+
+    public void addTrigegr(final Trigger trigger) {
+        this.triggers.put(trigger.getName(), trigger);
+    }
+
     @Override
     public String toString() {
         return "CardDefinition{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name=" + name +
                 ", type=" + type +
                 ", description=" + description +
+                ", triggers=" + triggers +
                 '}';
     }
 }
