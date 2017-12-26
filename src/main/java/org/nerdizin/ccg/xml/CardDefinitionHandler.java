@@ -9,9 +9,8 @@ import org.xml.sax.Attributes;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
-import org.xml.sax.helpers.DefaultHandler;
 
-public class CardDefinitionHandler extends DefaultHandler {
+public class CardDefinitionHandler extends BaseHandler {
 
     private static final Logger LOG = LoggerFactory.getLogger(CardDefinitionHandler.class.getName());
 
@@ -26,7 +25,6 @@ public class CardDefinitionHandler extends DefaultHandler {
     private final XMLReader parser;
     private final ContentHandler parent;
     private CardDefinition cardDefinition;
-    private final StringBuffer content = new StringBuffer();
 
     CardDefinitionHandler(final XMLReader parser, final ContentHandler parent, final CardSet cardSet) {
         this.parser = parser;
@@ -42,9 +40,11 @@ public class CardDefinitionHandler extends DefaultHandler {
     public void startElement(final String uri, final String localName, final String qName, final Attributes attributes) throws SAXException {
         switch(localName) {
             case NAME:
+                new LocalizedTextHandler(parser, this, cardDefinition.getName()).handle();
+                break;
             case ID:
             case TYPE:
-                content.setLength(0);
+                resetContent();
                 break;
             case DEFINITION:
                 cardDefinition = new CardDefinition();
@@ -58,14 +58,11 @@ public class CardDefinitionHandler extends DefaultHandler {
     @Override
     public void endElement(final String uri, final String localName, final String qName) throws SAXException {
         switch(localName) {
-            case NAME :
-                cardDefinition.setName(content.toString());
-                break;
             case ID:
-                cardDefinition.setId(Integer.parseInt(content.toString()));
+                cardDefinition.setId(Integer.parseInt(getContent()));
                 break;
             case TYPE:
-                cardDefinition.setType(CardType.getCardTypeByName(content.toString()));
+                cardDefinition.setType(CardType.getCardTypeByName(getContent()));
                 break;
             case DEFINITION :
                 cardSet.addCardDefinition(cardDefinition);
@@ -74,11 +71,6 @@ public class CardDefinitionHandler extends DefaultHandler {
                 parser.setContentHandler(parent);
                 break;
         }
-    }
-
-    @Override
-    public void characters(final char[] buffer, final int start, final int length) throws SAXException {
-        content.append(buffer, start, length);
     }
 
 }

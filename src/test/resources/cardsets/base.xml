@@ -4,7 +4,11 @@
     <Definitions>
         <Definition>
             <Id>1</Id>
-            <Name>Goldmine</Name>
+            <Name>
+                <LocalizedText language="en">
+                    Goldmine
+                </LocalizedText>
+            </Name>
             <Type>Location</Type>
             <SubTypes>
                 <SubType>Mine</SubType>

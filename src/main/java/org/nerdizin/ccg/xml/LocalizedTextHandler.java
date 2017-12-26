@@ -7,20 +7,17 @@ import org.xml.sax.Attributes;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
-import org.xml.sax.helpers.DefaultHandler;
 
-public class LocalizedTextHandler extends DefaultHandler {
+public class LocalizedTextHandler extends BaseHandler {
 
     private static final Logger LOG = LoggerFactory.getLogger(LocalizedTextHandler.class.getName());
 
     private static final String LOCALIZED_TEXT = "LocalizedText";
-    private static final String DESCRIPTION = "Description";
 
     private final LocalizedText localizedText;
     private final XMLReader parser;
     private final ContentHandler parent;
     private String language;
-    private final StringBuffer content = new StringBuffer();
 
 
     LocalizedTextHandler(final XMLReader parser, final ContentHandler parent, final LocalizedText localizedText) {
@@ -37,7 +34,7 @@ public class LocalizedTextHandler extends DefaultHandler {
     public void startElement(final String uri, final String localName, final String qName, final Attributes attributes) throws SAXException {
         switch(localName) {
             case LOCALIZED_TEXT:
-                content.setLength(0);
+                resetContent();
                 language = attributes.getValue("language");
                 break;
         }
@@ -47,16 +44,12 @@ public class LocalizedTextHandler extends DefaultHandler {
     public void endElement(final String uri, final String localName, final String qName) throws SAXException {
         switch(localName) {
             case LOCALIZED_TEXT:
-                localizedText.addLocalizedText(language, content.toString());
+                localizedText.addLocalizedText(language, getContent());
                 break;
-            case DESCRIPTION:
+            default:
                 parser.setContentHandler(parent);
                 break;
         }
     }
 
-    @Override
-    public void characters(final char[] buffer, final int start, final int length) throws SAXException {
-        content.append(buffer, start, length);
-    }
 }

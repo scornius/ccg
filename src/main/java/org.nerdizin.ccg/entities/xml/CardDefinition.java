@@ -6,11 +6,12 @@ import org.nerdizin.ccg.entities.LocalizedText;
 public class CardDefinition {
 
     private int id;
-    private String name;
+    private LocalizedText name;
     private CardType type;
     private LocalizedText description;
 
     public CardDefinition() {
+        name = new LocalizedText();
         description = new LocalizedText();
     }
 
@@ -22,11 +23,11 @@ public class CardDefinition {
         this.id = id;
     }
 
-    public String getName() {
+    public LocalizedText getName() {
         return name;
     }
 
-    public void setName(final String name) {
+    public void setName(final LocalizedText name) {
         this.name = name;
     }
 
