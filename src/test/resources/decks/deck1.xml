@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Deck>
+    <Name>Test deck</Name>
+    <Cards>
+        <Card id="GOLD_MINE" number="8"/>
+        <Card id="TEMPLE_OF_LIGHT" number="4"/>
+    </Cards>
+</Deck>

@@ -6,7 +6,7 @@ import java.util.Map;
 public class CardSet {
 
     private String name;
-    private Map<Integer, CardDefinition> definitions = new HashMap<>();
+    private Map<String, CardDefinition> definitions = new HashMap<>();
 
     public void addCardDefinition(final CardDefinition cardDefinition) {
         definitions.put(cardDefinition.getId(), cardDefinition);

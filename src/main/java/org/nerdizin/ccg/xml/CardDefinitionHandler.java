@@ -63,7 +63,7 @@ public class CardDefinitionHandler extends BaseHandler {
     public void endElement(final String uri, final String localName, final String qName) throws SAXException {
         switch(localName) {
             case ID:
-                cardDefinition.setId(Integer.parseInt(getContent()));
+                cardDefinition.setId(getContent());
                 break;
             case TYPE:
                 cardDefinition.setType(CardType.getCardTypeByName(getContent()));

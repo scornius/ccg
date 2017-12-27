@@ -1,20 +1,19 @@
 package org.nerdizin.ccg.xml;
 
-import org.nerdizin.ccg.entities.CardSet;
+import org.nerdizin.ccg.entities.Deck;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
-public class CardSetHandler extends BaseHandler {
+public class DeckHandler extends BaseHandler {
 
     private static final String NAME = "Name";
-    private static final String DEFINITIONS = "Definitions";
+    private static final String CARDS = "Cards";
 
     private XMLReader parser;
-    private CardSet cardSet = new CardSet();
+    private Deck deck = new Deck();
 
-
-    CardSetHandler(final XMLReader parser) {
+    public DeckHandler(final XMLReader parser) {
         this.parser = parser;
     }
 
@@ -26,8 +25,8 @@ public class CardSetHandler extends BaseHandler {
             case NAME:
                 resetContent();
                 break;
-            case DEFINITIONS:
-                new CardDefinitionHandler(parser, this, cardSet).handle();
+            case CARDS:
+                new CardHandler(parser, this, deck).handle();
                 break;
         }
     }
@@ -36,12 +35,12 @@ public class CardSetHandler extends BaseHandler {
     public void endElement(final String uri, final String localName, final String qName) throws SAXException {
         switch(localName) {
             case NAME :
-                cardSet.setName(getContent());
+                deck.setName(getContent());
                 break;
         }
     }
 
-    public CardSet getCardSet() {
-        return cardSet;
+    public Deck getDeck() {
+        return deck;
     }
 }

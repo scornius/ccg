@@ -1,9 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <CardSet>
     <Name>Base</Name>
 
     <Definitions>
         <Definition>
-            <Id>1</Id>
+            <Id>GOLD_MINE</Id>
             <Name>
                 <LocalizedText language="en">
                     Goldmine
@@ -32,7 +33,7 @@
             </Triggers>
         </Definition>
         <Definition>
-            <Id>2</Id>
+            <Id>TEMPLE_OF_LIGHT</Id>
             <Name>
                 <LocalizedText language="en">
                     Temple of Light

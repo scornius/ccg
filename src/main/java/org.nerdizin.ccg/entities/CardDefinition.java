@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class CardDefinition {
 
-    private int id;
+    private String id;
     private LocalizedText name;
     private CardType type;
     private LocalizedText description;
@@ -16,11 +16,11 @@ public class CardDefinition {
         description = new LocalizedText();
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(final int id) {
+    public void setId(final String id) {
         this.id = id;
     }
 
