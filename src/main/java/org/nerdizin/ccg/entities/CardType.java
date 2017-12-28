@@ -2,7 +2,8 @@ package org.nerdizin.ccg.entities;
 
 public enum CardType {
 
-    LOCATION("Location");
+    LOCATION("Location"),
+    CREATURE("Creature");
 
     private final String name;
 

@@ -36,7 +36,7 @@ public class CardHandler extends BaseHandler {
                 final String id = attributes.getValue("id");
                 final String numberStr = attributes.getValue("number");
                 final int number = Integer.parseInt(numberStr);
-                final Card card = new Card();
+                final Card card = new Card(null);
                 LOG.info("id=" + id + ", number=" + number);
                 break;
         }
