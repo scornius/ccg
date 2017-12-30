@@ -28,4 +28,13 @@ public class Game {
     public void setActivePlayer(final Player activePlayer) {
         this.activePlayer = activePlayer;
     }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "players=" + players +
+                ", activePlayer=" + activePlayer +
+                ", turn=" + turn +
+                '}';
+    }
 }
