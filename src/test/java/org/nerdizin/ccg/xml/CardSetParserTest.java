@@ -14,7 +14,7 @@ class CardSetParserTest {
     @Test
     void testParser() {
 
-        final CardSet cardSet = CardSetParser.parseCardSet(getResourceURL("cardsets/base.xml"));
+        final CardSet cardSet = CardSetParser.parseCardSet(getResourceURL("base.xml"));
         LOG.info(cardSet.toString());
     }
 
