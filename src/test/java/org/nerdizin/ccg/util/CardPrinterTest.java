@@ -25,5 +25,6 @@ class CardPrinterTest {
 
         final Card card = cardFactory.createCardById("GOLD_MINE");
         LOG.info(CardPrinter.printCard(card, Locale.ENGLISH));
+        LOG.info(CardPrinter.printCard(card, Locale.GERMAN));
     }
 }

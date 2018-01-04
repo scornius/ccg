@@ -1,5 +1,9 @@
 package org.nerdizin.ccg.entities;
 
+import org.nerdizin.ccg.util.Translator;
+
+import java.util.Locale;
+
 public enum CardType {
 
     LOCATION("Location"),
@@ -13,6 +17,10 @@ public enum CardType {
 
     public String getName() {
         return name;
+    }
+
+    public String getLocalizedName(final Locale locale) {
+        return Translator.translate(name, locale);
     }
 
     public static CardType getCardTypeByName(final String name) {

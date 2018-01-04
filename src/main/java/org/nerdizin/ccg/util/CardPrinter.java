@@ -12,7 +12,8 @@ public class CardPrinter {
 
         final CardDefinition cardDefinition = card.getCardDefinition();
         final StringBuffer result = new StringBuffer();
-        result.append(printLocalizedText(cardDefinition.getName(), locale));
+        result.append(printLocalizedText(cardDefinition.getName(), locale)).append("\n");
+        result.append(cardDefinition.getType().getLocalizedName(locale));
         return result.toString();
     }
 
