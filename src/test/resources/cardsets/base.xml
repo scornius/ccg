@@ -50,5 +50,20 @@
                 </LocalizedText>
             </Description>
         </Definition>
+        <Definition>
+            <Id>ORC</Id>
+            <Name>
+                <LocalizedText language="en">
+                    Orc
+                </LocalizedText>
+            </Name>
+            <Type>Creature</Type>
+            <SubTypes>
+                <SubType>Orc</SubType>
+            </SubTypes>
+            <Cost></Cost>
+            <Description>
+            </Description>
+        </Definition>
     </Definitions>
 </CardSet>

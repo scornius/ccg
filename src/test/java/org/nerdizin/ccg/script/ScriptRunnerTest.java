@@ -24,6 +24,16 @@ class ScriptRunnerTest {
         System.out.println(result);
     }
 
+    @Test
+    void testCallStaticMethod() {
+
+        final StringBuilder script = new StringBuilder();
+        script.append("");
+
+        final ScriptRunner scriptRunner = new ScriptRunner(createGame());
+        scriptRunner.runScript(script.toString());
+    }
+
     private Game createGame() {
         final Game game = new Game();
         game.addPlayer(new Player("Alphons"));

@@ -1,9 +1,10 @@
 package org.nerdizin.ccg.filter;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.nerdizin.ccg.entities.Card;
-import org.nerdizin.ccg.entities.CardDefinition;
 import org.nerdizin.ccg.entities.CardType;
+import org.nerdizin.ccg.test.CardFactory;
 import org.nerdizin.ccg.util.CardFinder;
 
 import java.util.ArrayList;
@@ -13,6 +14,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CardFinderTest {
+
+    private static CardFactory cardFactory;
+
+    @BeforeAll
+    static void init() {
+        cardFactory = new CardFactory();
+    }
 
     @Test
     void testIdFilter() {
@@ -55,21 +63,9 @@ class CardFinderTest {
     private List<Card> createCards() {
 
         final List<Card> result = new ArrayList<>();
-        final CardDefinition cd1 = new CardDefinition();
-        cd1.setId("GOLD_MINE");
-        cd1.setType(CardType.LOCATION);
-        final CardDefinition cd2 = new CardDefinition();
-        cd2.setId("TEMPLE_OF_LIGHT");
-        cd2.setType(CardType.LOCATION);
-        final CardDefinition cd3 = new CardDefinition();
-        cd3.setId("ORC");
-        cd3.setType(CardType.CREATURE);
-        final Card c1 = new Card(cd1);
-        final Card c2 = new Card(cd2);
-        final Card c3 = new Card(cd3);
-        result.add(c1);
-        result.add(c2);
-        result.add(c3);
+        result.add(cardFactory.createCardById("GOLD_MINE"));
+        result.add(cardFactory.createCardById("TEMPLE_OF_LIGHT"));
+        result.add(cardFactory.createCardById("ORC"));
 
         return result;
     }

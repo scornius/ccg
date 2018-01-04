@@ -12,7 +12,7 @@ public class CardSet {
         definitions.put(cardDefinition.getId(), cardDefinition);
     }
 
-    public CardDefinition getCardDefinition(final Integer id) {
+    public CardDefinition getCardDefinition(final String id) {
         return definitions.get(id);
     }
 
