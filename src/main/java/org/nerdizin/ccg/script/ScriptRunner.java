@@ -25,6 +25,7 @@ public class ScriptRunner {
 
         final ScriptEngine engine = factory.getScriptEngine(new ParanoidClassFilter());
         engine.getContext().setAttribute("game", game, ScriptContext.ENGINE_SCOPE);
+        engine.getContext().setAttribute("player", game.getActivePlayer(), ScriptContext.ENGINE_SCOPE);
 
         try {
             return engine.eval(script);
